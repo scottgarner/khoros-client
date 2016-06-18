@@ -15,7 +15,6 @@ var khoros = {
 	sing: function(song, data) {
 		if (!data.khoros) data.khoros = {};
 		data.khoros.room = khoros.singRoom;
-
 		khoros.socket.emit("khoros." + song, data);
 	},
 	listen: function(song, callback) {
