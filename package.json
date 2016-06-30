@@ -1,8 +1,8 @@
 {
   "name": "khoros-client",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "JS client for Khoros.",
-  "main": "khoros.js",
+  "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -15,5 +15,11 @@
   "bugs": {
     "url": "https://github.com/scottgarner/khoros-client/issues"
   },
-  "homepage": "https://github.com/scottgarner/khoros-client#readme"
+  "homepage": "https://github.com/scottgarner/khoros-client#readme",
+  "dependencies": {
+    "socket.io-client": "^1.4.8"
+  },
+  "scripts": {
+    "browserify": "browserify -s khoros index.js > khoros.js"
+  }  
 }

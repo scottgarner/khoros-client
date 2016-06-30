@@ -1,23 +1,31 @@
-var khoros = {
+(function(f){if(typeof exports==="object"&&typeof module!=="undefined"){module.exports=f()}else if(typeof define==="function"&&define.amd){define([],f)}else{var g;if(typeof window!=="undefined"){g=window}else if(typeof global!=="undefined"){g=global}else if(typeof self!=="undefined"){g=self}else{g=this}g.khoros = f()}})(function(){var define,module,exports;return (function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);var f=new Error("Cannot find module '"+o+"'");throw f.code="MODULE_NOT_FOUND",f}var l=n[o]={exports:{}};t[o][0].call(l.exports,function(e){var n=t[o][1][e];return s(n?n:e)},l,l.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({1:[function(require,module,exports){
+module.exports = {
 	socket: null,
 	singRoom: null,
 	listenRoom: null,
 	init: function (socket, singRoom, listenRoom) {
+		var scope = this;
 
-		khoros.socket = socket;
-		khoros.singRoom = singRoom;
-		khoros.listenRoom = listenRoom;
+		scope.socket = socket;
+		scope.singRoom = singRoom;
+		scope.listenRoom = listenRoom;
 
 		if (listenRoom != null) {
 			socket.emit("khoros.join", {khoros: {room: listenRoom}});
 		}		
 	},
 	sing: function(song, data) {
+		var scope = this;
+
 		if (!data.khoros) data.khoros = {};
-		data.khoros.room = khoros.singRoom;
-		khoros.socket.emit("khoros." + song, data);
+		data.khoros.room = scope.singRoom;
+		scope.socket.emit("khoros." + song, data);
 	},
 	listen: function(song, callback) {
-		khoros.socket.on("khoros." + song, callback);
+		var scope = this;
+
+		scope.socket.on("khoros." + song, callback);
 	}
 }
+},{}]},{},[1])(1)
+});
